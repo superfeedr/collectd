@@ -51,7 +51,7 @@
 #define RECURSOR_SOCKET  LOCALSTATEDIR"/run/pdns_recursor.controlsocket"
 #define RECURSOR_COMMAND "get noerror-answers nxdomain-answers " \
   "servfail-answers sys-msec user-msec qa-latency cache-entries cache-hits " \
-  "cache-misses questions\n"
+  "cache-misses questions packetcache-entries packetcache-hits packetcache-misses\n"
 
 struct list_item_s;
 typedef struct list_item_s list_item_t;
@@ -102,6 +102,10 @@ nsspeeds-entries    shows the number of entries in the NS speeds map
 nsset-invalidations number of times an nsset was dropped because it no longer worked
 nxdomain-answers    counts the number of times it answered NXDOMAIN since starting
 outgoing-timeouts   counts the number of timeouts on outgoing UDP queries since starting
+packetcache-bytes   Size of the packet cache in bytes (since 3.3.1)
+packetcache-entries Size of packet cache (since 3.2)
+packetcache-hits    Packet cache hits (since 3.2)
+packetcache-misses  Packet cache misses (since 3.2)
 qa-latency          shows the current latency average
 questions           counts all End-user initiated queries with the RD bit set
 resource-limits     counts number of queries that could not be performed because of resource limits
@@ -195,6 +199,11 @@ statname_lookup_t lookup_table[] = /* {{{ */
   {"cache-entries",       "cache_size",   NULL},
   {"cache-hits",          "cache_result", "hit"},
   {"cache-misses",        "cache_result", "miss"},
+
+  /* Packet Cache */
+  {"packetcache-entries",   "cache_size",   NULL},
+  {"packetcache-hits",      "cache_result", "hit"},
+  {"packetcache-misses",    "cache_result", "miss"},
 
   /* Total number of questions.. */
   {"questions",           "dns_qtype",    "total"},
