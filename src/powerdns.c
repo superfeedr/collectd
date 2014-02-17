@@ -201,9 +201,9 @@ statname_lookup_t lookup_table[] = /* {{{ */
   {"cache-misses",        "cache_result", "miss"},
 
   /* Packet Cache */
-  {"packetcache-entries",   "cache_size",   "packetcache-entries"},
-  {"packetcache-hits",      "cache_result", "packetcache-hit"},
-  {"packetcache-misses",    "cache_result", "packetcache-miss"},
+  {"packetcache-hit",        "cache_result", "packet-hit"},
+  {"packetcache-miss",       "cache_result", "packet-miss"},
+  {"packetcache-entries",    "cache_size",   "packet"},
 
   /* Total number of questions.. */
   {"questions",           "dns_qtype",    "total"},
